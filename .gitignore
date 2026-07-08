@@ -1,0 +1,26 @@
+*.tar.gz
+
+*.zip
+
+__pycache__/
+*.pyc
+
+**/espeak-ng/espeak-ng-data/
+*_dict
+**/espeak-ng-data/
+
+# Compiled library files
+*.so
+*.so.*
+
+# AI Models and data files
+*.onnx
+*.ort
+*.mdl
+
+# Binary executable files
+piper
+
+# Remaining models and library data
+vosk-model-small-en-us-0.15/
+piper/espeak-ng/
