@@ -1,4 +1,4 @@
-# Project Inventory (Bill of Materials)
+# Project Inventory 
 
 This is the exact list of hardware components, power supplies, and wires used to build this bot.
 
