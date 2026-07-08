@@ -131,6 +131,9 @@ with all that being said i still have to polish the repository and make the bot'
 note: i will draw the shape of the lilyBot, a "lily" flower as its name shows, and make it from clay, paint it myself aswell.
 i am thinking to add a LED to change colors when the bot is thinking, speaking or listening, but this is just some additional things to do.
 
+the following week will be about this _designing, building the body with clay, editing_ and then the project will be officialy done.
+As for the bot it is already done, just gonna add more details to make it feel more complete.
+
 > 💡 **My Tips as a Self-Taught Programmer:**
 > I use AI as a personal tutor to teach me complex topics. I ask as many questions as it takes until the concept clicks. I ask it to generate exercises for me—starting with highly specific topic exercises, and moving up to complex, multi-topic challenges. I make sure to practice both *writing* code from scratch and *reading/analyzing* some code.
 
