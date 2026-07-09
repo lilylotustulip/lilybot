@@ -28,3 +28,6 @@ Designing the layouts of the presentation and editing on my own.
 sketching the lily flower that was originally the main design for the bot, but unfortunately the clay that had the lily sketched in it, felt apart.
 Thus i had to make an other one which i think turned out to be more beautiful, (i will leave both designs here so you can check them out.
 the second clay bot doesnt have a lily sketched in it, because i thought that having that naturalistic theme and rocky texture would look more real, and more beautiful to match the nature, and botanical theme, especially those curves in the top of the pot, seems to be like flowing petals.
+
+## Presentation:
+here is the presentation of it [presentation](https://youtu.be/5iiit7Okda8?si=iOipWRsYhxOSS8oy)
