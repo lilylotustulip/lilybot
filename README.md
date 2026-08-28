@@ -27,15 +27,17 @@ Built the chassis from air-dry clay with a naturalistic, rocky texture for an ae
 
 ## 🛠️ Tech Stack
 
-| Component       | Technology|
-|-----------------|-----------|
-| **Hardware**    | Raspberry Pi Zero 2 W |
-| **Microphone**  | INMP441 I2S Microphone |
+| Component | Technology |
+|-----------|-----------|
+| **Hardware** | Raspberry Pi Zero 2 W |
+| **Microphone** | INMP441 I2S Microphone |
 | **Speaker/Amp** | Audio amplifier module |
-| **Language**    | Python 3.9+ |
-| **AI Framework**| llama.cpp |
-| **LLM**         | SmolLM2-135M-Instruct (Q3_K_S quantized, GGUF format) |
-| **Key Learning**| Hardware integration, audio processing, embedded systems |
+| **Language** | Python 3.9+ |
+| **Audio I/O** | sounddevice |
+| **Speech-to-Text** | Vosk |
+| **LLM Runtime** | llama.cpp |
+| **LLM** | SmolLM2-135M-Instruct (Q3_K_S quantized, GGUF format) |
+| **Key Learning** | Hardware integration, audio processing, embedded systems |
 ---
 
 ## 📋 Hardware Components
@@ -54,16 +56,17 @@ For detailed component specifications and pinout information, see [Hardware Inve
 
 ```
 lilybot/
-├── code/                   # code
+├── code/                  # Source code
 ├── hardware/              # Hardware schematics & docs
 │   └── components/
-│      └── inventory.md
-|      └── pinouts.md
-     └── wiring.md
+│       ├── inventory.md   # Component specifications
+│       ├── pinouts.md     # Pin mapping
+│       └── wiring.md      # Wiring diagrams/notes
 ├── docs/
 │   └── journal.md         # Development journal & troubleshooting
-├── README.md              # This file
-└── LICENSE                # MIT License
+├── .gitignore
+├── README.md               # This file
+└── LICENSE                 # MIT License
 ```
 
 ---
@@ -110,7 +113,7 @@ For detailed day-by-day progress, debugging steps, and solutions, see [Developme
 
 3. **Install dependencies**
    ```bash
-   pip install -r requirements.txt
+   pip install sounddevice vosk numpy requests
    ```
 
 4. **Configure audio settings**
@@ -122,17 +125,18 @@ For detailed day-by-day progress, debugging steps, and solutions, see [Developme
 
 5. **Run LilyBot**
    ```bash
-   python src/lilybot.py
+   python code/main.py
    ```
 
 ---
 
 # 🎤 How It Works
 
-1. **Audio Input** → INMP441 microphone captures speech
-2. **Processing** → Audio is transcribed and passed to a local LLM
-3. **Response Generation** → SmolLM2-135M-Instruct (via llama.cpp) generates a reply on-device
-4. **Audio Output** → Speaker plays the response
+1. **Wake Word Detection** → System listens passively for a wake word to activate
+2. **Audio Input** → Once triggered, the INMP441 microphone captures speech via `sounddevice`
+3. **Speech-to-Text** → Vosk transcribes audio to text locally
+4. **Response Generation** → Transcribed text is passed to SmolLM2-135M-Instruct (via llama.cpp), which generates a reply on-device
+5. **Audio Output** → Speaker plays the response
 
 **All processing happens locally — no internet required.**
 ---
@@ -150,22 +154,6 @@ For detailed day-by-day progress, debugging steps, and solutions, see [Developme
 
 ---
 
-## 🔧 Configuration
-
-### Audio Settings
-Edit `config.yaml` to adjust:
-- Microphone sensitivity
-- Speaker volume
-- Audio input/output device selection
-
-### AI Model
-Choose between lightweight models optimized for edge devices (see `docs/models.md`)
-
-### Customization
-Modify system prompts in `src/prompts/` to change personality and response style
-
----
-
 ## 🐛 Troubleshooting
 
 ### Microphone Not Working
@@ -178,11 +166,6 @@ Modify system prompts in `src/prompts/` to change personality and response style
 1. Verify amplifier power connection
 2. Test speaker separately: `speaker-test -t sine -f 1000 -l 5`
 3. Check audio device: `aplay -l`
-
-### High Latency
-1. Reduce model size (trades accuracy for speed)
-2. Enable GPU acceleration if available
-3. Profile with: `python -m cProfile src/lilybot.py`
 
 See [Journal](docs/journal.md) for more troubleshooting tips.
 
