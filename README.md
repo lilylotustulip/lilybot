@@ -54,10 +54,12 @@ For detailed component specifications and pinout information, see [Hardware Inve
 
 ```
 lilybot/
-├── src/                   # Source code
+├── code/                   # code
 ├── hardware/              # Hardware schematics & docs
 │   └── components/
-│       └── inventory.md   # Component specifications
+│      └── inventory.md
+|      └── pinouts.md
+     └── wiring.md
 ├── docs/
 │   └── journal.md         # Development journal & troubleshooting
 ├── README.md              # This file
@@ -89,7 +91,7 @@ For detailed day-by-day progress, debugging steps, and solutions, see [Developme
 
 ### Prerequisites
 - Raspberry Pi Zero 2 W
-- MicroSD card (32GB recommended)
+- MicroSD card (16GB recommended)
 - Power supply
 - Soldering iron & basic electronics knowledge
 
@@ -149,16 +151,6 @@ For detailed day-by-day progress, debugging steps, and solutions, see [Developme
 
 ---
 
-## 📊 Performance Metrics
-
-- **Response Time**: ~2-5 seconds (on-device processing)
-- **Power Consumption**: ~5W continuous
-- **Memory Usage**: 2-4GB (optimized for 8GB Raspberry Pi)
-- **Uptime**: 24/7 capable
-- **Accuracy**: Comparable to cloud-based solutions
-
----
-
 ## 🔧 Configuration
 
 ### Audio Settings
@@ -201,19 +193,7 @@ See [Journal](docs/journal.md) for more troubleshooting tips.
 
 - [Raspberry Pi GPIO Guide](https://www.raspberrypi.org/documentation/usage/gpio/)
 - [I2S Audio on Raspberry Pi](https://learn.adafruit.com/adafruit-i2s-stereo-decoder-uda1334a)
-- [Edge AI with TensorFlow Lite](https://www.tensorflow.org/lite/guide)
 
----
-
-## 🗺️ Roadmap
-
-- [x] Basic voice recognition on-device
-- [ ] Improved natural language understanding
-- [ ] Multi-language support
-- [ ] Wake-word detection (always-listening mode)
-- [ ] Integration with smart home devices
-- [ ] Persistent conversation memory
-- [ ] Smaller model variants for Pi Zero W
 
 ---
 
@@ -226,21 +206,13 @@ Want to improve LilyBot? Contributions welcome!
 3. Document your changes
 4. Submit a Pull Request
 
-**Areas we'd love help with:**
-- Model optimization for faster inference
-- Improved voice quality
-- Documentation & tutorials
-- Hardware alternatives testing
-
 ---
 
 ## ⚠️ Limitations
 
-- Model size limited by Raspberry Pi RAM (4-8GB)
-- Inference speed slower than cloud services (2-5s vs <1s)
+- Model size limited by Raspberry Pi RAM 
+- Inference speed slower than cloud services 
 - Requires manual setup (not plug-and-play)
-- Audio quality depends on microphone quality
-- No multi-language support yet
 
 ---
 
@@ -253,8 +225,7 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 ## 🙏 Acknowledgments
 
 - **Inspired by**: Privacy-first computing, IoT innovation, and the open-source community
-- **Built with**: Raspberry Pi OS, TensorFlow Lite, PyAudio
-- **Special thanks**: to the electronics community for hardware troubleshooting advice
+- **Built with**: Raspberry Pi OS, python
 
 ---
 
@@ -267,6 +238,4 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 
 ---
 
-**LilyBot: Intelligence Without Clouds** 🌱🤖
-
-*Proof that edge AI is the future — and it works today.*
+**LilyBot: Big Intelligence on small hardware** 🌱🤖
