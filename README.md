@@ -27,15 +27,15 @@ Built the chassis from air-dry clay with a naturalistic, rocky texture for an ae
 
 ## 🛠️ Tech Stack
 
-| Component | Technology |
-|-----------|-----------|
-| **Hardware** | Raspberry Pi Zero 2 W |
-| **Microphone** | INMP441 I2S Microphone |
+| Component       | Technology|
+|-----------------|-----------|
+| **Hardware**    | Raspberry Pi Zero 2 W |
+| **Microphone**  | INMP441 I2S Microphone |
 | **Speaker/Amp** | Audio amplifier module |
-| **Language** | Python 3.9+ |
-| **AI Framework** | Edge-based ML models |
-| **Key Learning** | Hardware integration, audio processing, embedded systems |
-
+| **Language**    | Python 3.9+ |
+| **AI Framework**| llama.cpp |
+| **LLM**         | SmolLM2-135M-Instruct (Q3_K_S quantized, GGUF format) |
+| **Key Learning**| Hardware integration, audio processing, embedded systems |
 ---
 
 ## 📋 Hardware Components
@@ -127,15 +127,14 @@ For detailed day-by-day progress, debugging steps, and solutions, see [Developme
 
 ---
 
-## 🎤 How It Works
+# 🎤 How It Works
 
 1. **Audio Input** → INMP441 microphone captures speech
-2. **Processing** → Edge AI model processes audio locally
-3. **Response Generation** → LLM generates reply (all on-device)
-4. **Audio Output** → Speaker plays response
+2. **Processing** → Audio is transcribed and passed to a local LLM
+3. **Response Generation** → SmolLM2-135M-Instruct (via llama.cpp) generates a reply on-device
+4. **Audio Output** → Speaker plays the response
 
 **All processing happens locally — no internet required.**
-
 ---
 
 ## 🌟 Key Features
@@ -193,7 +192,7 @@ See [Journal](docs/journal.md) for more troubleshooting tips.
 
 - [Raspberry Pi GPIO Guide](https://www.raspberrypi.org/documentation/usage/gpio/)
 - [I2S Audio on Raspberry Pi](https://learn.adafruit.com/adafruit-i2s-stereo-decoder-uda1334a)
-
+- [llama.cpp](https://github.com/ggml-org/llama.cpp)
 
 ---
 
@@ -225,8 +224,8 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 ## 🙏 Acknowledgments
 
 - **Inspired by**: Privacy-first computing, IoT innovation, and the open-source community
-- **Built with**: Raspberry Pi OS, python
-
+- **Built with**: Raspberry Pi OS, python, llama.cpp.
+- **Model**: [SmolLM2-135M-Instruct](https://huggingface.co/HuggingFaceTB/SmolLM2-135M-Instruct) by HuggingFaceTB
 ---
 
 ## 📞 Support & Feedback
